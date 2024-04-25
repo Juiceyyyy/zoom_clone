@@ -3,6 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:zoom_clone_tutorial/resources/jitsi_meet_methods.dart';
 import 'package:zoom_clone_tutorial/widgets/home_meeting_button.dart';
+import 'dart:html' as html;
+
 
 class MeetingScreen extends StatelessWidget {
   MeetingScreen({Key? key}) : super(key: key);
@@ -49,14 +51,34 @@ class MeetingScreen extends StatelessWidget {
             ),
           ],
         ),
-        const Expanded(
+        Expanded(
           child: Center(
-            child: Text(
-              'Create/Join Meetings with just a click!',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'New Meetings only works on Android and IOS due to dependencies!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 10),
+                InkWell(
+                  onTap: () {
+                    html.window.open('https://meet.jit.si/', '_blank');
+                  },
+                  child: Text(
+                    'Click here to create a meeting on web',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
           ),
         ),
